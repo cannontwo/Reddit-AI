@@ -48,6 +48,5 @@ char_avg = char_sum / n
 print "Word length Average: %s" % word_avg
 print "Character length Average: %s" % char_avg
 print sorted(chars.items(), key=lambda x: x[1], reverse=True)
-print sorted(chars, key=chars.get, reverse=True)
 
 
