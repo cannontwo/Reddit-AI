@@ -17,7 +17,7 @@ for f in files:
     if f.endswith(".txt"):
         with open(f, "r") as read_file:
             for line in read_file:
-                params = string.rsplit(line, ":")
+                params = string.rsplit(line, "***")
                 already_stored.append(string.replace(params[1], "\n", ""))
 
 print already_stored
@@ -29,7 +29,7 @@ while True:
     with open(str(today) + ".txt", "a") as store_file:
         for submission in subreddit.get_hot(limit=20):
             if submission.id not in already_stored and submission.score > 1000:
-                store_file.write(str(string.replace(submission.title, '.', '')) + ":" + submission.id + "\n")
+                store_file.write(str(string.replace(submission.title, '.', '')) + "***" + submission.id + "\n")
                 already_stored.append(submission.id)
                 print "Stored ID: %s" % submission.id
             else:

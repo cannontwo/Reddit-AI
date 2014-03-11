@@ -18,7 +18,7 @@ for f in files:
     if f.endswith(".txt"):
         with open(f, "r") as read_file:
             for line in read_file:
-                params = string.rsplit(line, ":")
+                params = string.rsplit(line, "***")
                 if params[1] not in already_processed:
                     titles[params[1]] = params[0]
                     already_processed.append(params[1])
