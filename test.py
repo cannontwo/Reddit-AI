@@ -6,6 +6,7 @@ import os
 import random
 import json
 
+already_processed = []
 if os.path.isfile("already_processed.json"):
     with open("already_processed.json", "r") as read_file:
         already_processed = json.loads(read_file.read())
