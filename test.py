@@ -76,7 +76,7 @@ for char in chars.keys():
 print sorted(probs.items(), key=lambda x: x[1], reverse=True)
 
 return_string = ""
-for x in range(0, char_avg):
+for x in range(0, 40):
     r, s = random.random(), 0
     for key, value in probs.iteritems():
         s += value
