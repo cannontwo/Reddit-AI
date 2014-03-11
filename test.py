@@ -64,5 +64,6 @@ for x in range(0, char_avg):
         s += value
         if s >= r:
             return_string += key
+            break
 
 print return_string
