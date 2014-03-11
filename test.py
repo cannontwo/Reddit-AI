@@ -31,8 +31,10 @@ word_sum = 0
 char_sum = 0
 
 chars = {}
-with open("frequencies.json", "r") as read_file:
-    chars = json.loads(read_file.read())
+
+if os.path.isfile("frequencies.json"):
+    with open("frequencies.json", "r") as read_file:
+        chars = json.loads(read_file.read())
 
 for title_data in titles_data:
     n += 1
@@ -47,9 +49,8 @@ for title_data in titles_data:
 word_avg = word_sum / n
 char_avg = char_sum / n
 
-if os.path.isfile("frequencies.json"):
-    with open("frequencies.json", "w") as write_file:
-        write_file.write(json.dumps(chars))
+with open("frequencies.json", "w") as write_file:
+    write_file.write(json.dumps(chars))
 
 print "Word length Average: %s" % word_avg
 print "Character length Average: %s" % char_avg
