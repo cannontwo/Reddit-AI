@@ -4,7 +4,7 @@ __author__ = 'cannon'
 import string
 import os
 import random
-import sys
+import json
 
 titles = {}
 
@@ -49,12 +49,19 @@ print "Word length Average: %s" % word_avg
 print "Character length Average: %s" % char_avg
 
 probs = {}
+
+with open("probabilities.json", "r") as read_file:
+    probs = json.loads(read_file.read())
+
 total = sum(chars.values())
 
 for char in chars.keys():
     probs[char] = float(chars.get(char)) / float(total)
 
 print sorted(probs.items(), key=lambda x: x[1], reverse=True)
+
+with open("probabilities.json", "w") as write_file:
+    write_file.write(json.dump(probs))
 
 return_string = ""
 for x in range(0, char_avg):
