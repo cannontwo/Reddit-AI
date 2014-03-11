@@ -23,7 +23,7 @@ for f in files:
                     titles[params[1]] = params[0]
                     already_processed.append(params[1])
 
-with open("already_processed", "w") as write_file:
+with open("already_processed.json", "w") as write_file:
     write_file.write(json.dumps(already_processed))
 
 titles_data = []
@@ -46,18 +46,19 @@ if os.path.isfile("frequencies.json"):
     with open("frequencies.json", "r") as read_file:
         chars = json.loads(read_file.read())
 
-for title_data in titles_data:
-    n += 1
-    word_sum += title_data[0]
-    char_sum += title_data[1]
-    for char in title_data[2]:
-        if char not in chars:
-            chars[char] = 1
-        else:
-            chars[char] += 1
+if len(titles_data) > 0:
+    for title_data in titles_data:
+        n += 1
+        word_sum += title_data[0]
+        char_sum += title_data[1]
+        for char in title_data[2]:
+            if char not in chars:
+                chars[char] = 1
+            else:
+                chars[char] += 1
 
-word_avg = word_sum / n
-char_avg = char_sum / n
+    word_avg = word_sum / n
+    char_avg = char_sum / n
 
 with open("frequencies.json", "w") as write_file:
     write_file.write(json.dumps(chars))
