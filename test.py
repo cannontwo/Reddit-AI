@@ -31,6 +31,8 @@ word_sum = 0
 char_sum = 0
 
 chars = {}
+with open("frequencies.json", "r") as read_file:
+    chars = json.loads(read_file.read())
 
 for title_data in titles_data:
     n += 1
@@ -45,13 +47,13 @@ for title_data in titles_data:
 word_avg = word_sum / n
 char_avg = char_sum / n
 
+with open("frequencies.json", "w") as write_file:
+    write_file.write(json.dumps(chars))
+
 print "Word length Average: %s" % word_avg
 print "Character length Average: %s" % char_avg
 
 probs = {}
-
-with open("probabilities.json", "r") as read_file:
-    probs = json.loads(read_file.read())
 
 total = sum(chars.values())
 
@@ -59,9 +61,6 @@ for char in chars.keys():
     probs[char] = float(chars.get(char)) / float(total)
 
 print sorted(probs.items(), key=lambda x: x[1], reverse=True)
-
-with open("probabilities.json", "w") as write_file:
-    write_file.write(json.dump(probs))
 
 return_string = ""
 for x in range(0, char_avg):
