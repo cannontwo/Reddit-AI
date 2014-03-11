@@ -3,7 +3,6 @@ __author__ = 'cannon'
 
 import string
 import os
-import operator
 
 titles = {}
 
@@ -47,7 +46,11 @@ char_avg = char_sum / n
 
 print "Word length Average: %s" % word_avg
 print "Character length Average: %s" % char_avg
-print sorted(chars.items(), key=lambda x: x[1], reverse=True)
-print sorted(chars, key=chars.get, reverse=True)
 
+probs = {}
+total = sum(chars.values())
 
+for char in chars.keys():
+    probs[char] = float(chars.get(char)) / float(total)
+
+print sorted(probs.items(), key=lambda x: x[1], reverse=True)
