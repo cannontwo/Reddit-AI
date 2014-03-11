@@ -6,6 +6,10 @@ import os
 import random
 import json
 
+if os.path.isfile("already_processed.json"):
+    with open("already_processed.json", "r") as read_file:
+        already_processed = json.loads(read_file.read())
+
 titles = {}
 
 files = [f for f in os.listdir('.') if os.path.isfile(f)]
@@ -14,7 +18,12 @@ for f in files:
         with open(f, "r") as read_file:
             for line in read_file:
                 params = string.rsplit(line, ":")
-                titles[params[1]] = params[0]
+                if params[1] not in already_processed:
+                    titles[params[1]] = params[0]
+                    already_processed.append(params[1])
+
+with open("already_processed", "w") as write_file:
+    write_file.write(json.dumps(already_processed))
 
 titles_data = []
 
