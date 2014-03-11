@@ -3,6 +3,8 @@ __author__ = 'cannon'
 
 import string
 import os
+import random
+import sys
 
 titles = {}
 
@@ -54,3 +56,13 @@ for char in chars.keys():
     probs[char] = float(chars.get(char)) / float(total)
 
 print sorted(probs.items(), key=lambda x: x[1], reverse=True)
+
+return_string = ""
+for x in range(0, char_avg):
+    r, s = random.random(), 0
+    for key, value in probs:
+        s += value
+        if s >= r:
+            return_string += key
+
+print return_string
