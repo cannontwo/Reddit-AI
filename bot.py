@@ -3,11 +3,13 @@ __author__ = 'cannon'
 
 import praw
 import string
-import time
 import datetime
 import os
+import time
+import analysis
 
 already_stored = []
+start_time = time.time()
 
 r = praw.Reddit(user_agent='Bot to scrape post title text by u/Cannon10100')
 r.login('expected_reddit', 'lewis678')
@@ -36,3 +38,7 @@ while True:
                 print "Already stored ID: %s" % submission.id
 
     time.sleep(600)
+
+    if time.time() > start_time + 86400:
+        start_time = time.time()
+        r.submit("expectedreddit", "Expected title for stardate %s" % datetime.today(), text=analysis.analyze())
