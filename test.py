@@ -37,11 +37,10 @@ for title_data in titles_data:
     word_sum += title_data[0]
     char_sum += title_data[1]
     for char in title_data[2]:
-        if char is not ' ':
-            if char not in chars:
-                chars[char] = 1
-            else:
-                chars[char] += 1
+        if char not in chars:
+            chars[char] = 1
+        else:
+            chars[char] += 1
 
 word_avg = word_sum / n
 char_avg = char_sum / n
