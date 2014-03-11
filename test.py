@@ -60,11 +60,11 @@ if len(titles_data) > 0:
     word_avg = word_sum / n
     char_avg = char_sum / n
 
+    print "Word length Average: %s" % word_avg
+    print "Character length Average: %s" % char_avg
+
 with open("frequencies.json", "w") as write_file:
     write_file.write(json.dumps(chars))
-
-print "Word length Average: %s" % word_avg
-print "Character length Average: %s" % char_avg
 
 probs = {}
 
