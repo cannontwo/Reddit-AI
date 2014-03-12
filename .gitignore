@@ -1,6 +1,7 @@
 *.py[cod]
 *.log
 .idea/
+*.out
 
 # C extensions
 *.so

@@ -5,6 +5,7 @@ __author__ = 'cannon'
 import string
 import os
 import random
+import sys
 
 
 def analyze(order):
@@ -95,4 +96,7 @@ def analyze(order):
     return return_string
 
 if __name__ == "__main__":
-    print analyze(2)
+    if len(sys.argv) > 1:
+        print analyze(int(sys.argv[1]))
+    else:
+        print analyze(2)
