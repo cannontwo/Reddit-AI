@@ -1,6 +1,5 @@
 *.py[cod]
 *.log
-*.txt
 .idea/
 
 # C extensions

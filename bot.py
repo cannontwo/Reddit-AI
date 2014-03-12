@@ -14,10 +14,10 @@ start_time = time.time()
 r = praw.Reddit(user_agent='Bot to scrape post title text by u/Cannon10100')
 r.login('expected_reddit', 'lewis678')
 
-files = [f for f in os.listdir('.') if os.path.isfile(f)]
+files = [f for f in os.listdir('./text') if os.path.isfile("./text/" + f)]
 for f in files:
     if f.endswith(".txt"):
-        with open(f, "r") as read_file:
+        with open("./text/" + f, "r") as read_file:
             for line in read_file:
                 params = string.rsplit(line, "***")
                 already_stored.append(string.replace(params[1], "\n", ""))
@@ -28,7 +28,7 @@ while True:
     today = datetime.date.today()
     subreddit = r.get_subreddit('funny')
 
-    with open(str(today) + ".txt", "a") as store_file:
+    with open("./text/" + str(today) + ".txt", "a") as store_file:
         for submission in subreddit.get_hot(limit=20):
             if submission.id not in already_stored and submission.score > 1000:
                 store_file.write(str(string.replace(submission.title, '.', '')) + "***" + submission.id + "\n")

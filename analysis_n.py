@@ -12,10 +12,10 @@ def analyze(order):
 
     titles = {}
 
-    files = [f for f in os.listdir('.') if os.path.isfile(f)]
+    files = [f for f in os.listdir('./text') if os.path.isfile("./text/" + f)]
     for f in files:
         if f.endswith(".txt"):
-            with open(f, "r") as read_file:
+            with open("./text/" + f, "r") as read_file:
                 for line in read_file:
                     params = string.rsplit(line, "***")
                     if params[1] not in already_processed:
@@ -69,7 +69,7 @@ def analyze(order):
 
     return_string = ""
     while len(return_string) < 40:
-        if len(return_string) > order:
+        if len(return_string) > order > 1:
             last_one = return_string[-(order - 1):]
             sub_prob = {}
             for key, value in probs.iteritems():
@@ -95,4 +95,4 @@ def analyze(order):
     return return_string
 
 if __name__ == "__main__":
-    print analyze(3)
+    print analyze(2)
