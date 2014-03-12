@@ -79,12 +79,35 @@ for combo in combos.keys():
 print sorted(probs.items(), key=lambda x: x[1], reverse=True)
 
 return_string = ""
-for x in range(0, 40):
-    r, s = random.random(), 0
-    for key, value in probs.iteritems():
-        s += value
-        if s >= r:
-            return_string += key
-            break
+while len(return_string) < 40:
+    if len(return_string) > 2:
+        last_one = return_string[-1:]
+        sub_prob = {}
+        for key, value in probs.iteritems():
+            if key[0] is last_one:
+                sub_prob[key] = value
+
+        sub_prob_total = sum(sub_prob.values())
+        r, s = random.random() * sub_prob_total, 0
+
+        for key, value in sub_prob.iteritems():
+            s += value
+            if s >= r:
+                return_string += key[1]
+                break
+    else:
+        r, s = random.random(), 0
+        for key, value in probs.iteritems():
+            s += value
+            if s >= r:
+                return_string += key
+                break
+
+    # r, s = random.random(), 0
+    # for key, value in probs.iteritems():
+    #     s += value
+    #     if s >= r:
+    #         return_string += key
+    #         break
 
 print return_string
