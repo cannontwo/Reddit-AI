@@ -9,6 +9,7 @@ import time
 import analysis
 import requests
 import sys
+import io
 
 already_stored = []
 start_time = time.time()
@@ -44,7 +45,7 @@ with open('bot.out', 'w') as sys.stdout:
         today = datetime.date.today()
         subreddit = r.get_subreddit('funny')
 
-        with open("./text/" + str(today) + ".txt", "a") as store_file:
+        with io.open("./text/" + str(today) + ".txt", "a", encoding='utf8') as store_file:
             for submission in subreddit.get_hot(limit=20):
                 if submission.id not in already_stored and submission.score > 1000:
                     store_file.write(str(string.replace(submission.title, '.', '')) + "***" + submission.id + "\n")
