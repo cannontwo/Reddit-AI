@@ -6,7 +6,7 @@ import string
 import datetime
 import os
 import time
-import analysis
+import analysis_n
 import requests
 import sys
 
@@ -56,6 +56,3 @@ with open('bot.out', 'w') as sys.stdout:
         sys.stdout.flush()
         time.sleep(600)
 
-        if time.time() > start_time + 86400:
-            start_time = time.time()
-            r.submit("expectedreddit", "Expected title for stardate %s" % datetime.today(), text=analysis.analyze())
