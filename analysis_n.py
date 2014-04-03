@@ -6,9 +6,11 @@ import string
 import os
 import random
 import sys
+import time
 
 
 def analyze(order):
+    start_time = time.time()
     already_processed = []
 
     titles = {}
@@ -112,6 +114,8 @@ def analyze(order):
     #                 return_string += key
     #                 break
     ##########################################################################
+
+    print "Time: " + str(time.time() - start_time)
 
     return return_string
 
