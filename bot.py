@@ -47,7 +47,7 @@ with open('bot.out', 'w') as sys.stdout:
         with open("./text/" + str(today) + ".txt", "a") as store_file:
             for submission in subreddit.get_hot(limit=20):
                 if submission.id not in already_stored and submission.score > 1000:
-                    store_file.write(str(string.replace(submission.title, '.', '').replace(u'\u2019', "'").replace(u'\xe9', '').replace(u'\xb4', '')) + "***" + submission.id + "\n")
+                    store_file.write(str(string.replace(submission.title, '.', '').replace(u'\u2019', "'").replace(u'\u2026', '').replace(u'\xe9', '').replace(u'\xb4', '').replace(u'\ufeff', '')) + "***" + submission.id + "\n")
                     already_stored.append(submission.id)
                     print "Stored ID: %s" % submission.id
                 else:
