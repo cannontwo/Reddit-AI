@@ -13,8 +13,6 @@ def analyze(order):
     start_time = time.time()
     already_processed = []
 
-    #Hello
-
     titles = {}
 
     files = [f for f in os.listdir('./text') if os.path.isfile("./text/" + f)]
