@@ -13,6 +13,8 @@ def analyze(order):
     start_time = time.time()
     already_processed = []
 
+    #Hello
+
     titles = {}
 
     files = [f for f in os.listdir('./text') if os.path.isfile("./text/" + f)]
@@ -87,33 +89,6 @@ def analyze(order):
         else:
             r = random.random() * len(list(combos.iteritems()))
             return_string += str(combos.keys()[int(r)])
-
-    #########################################################################
-    # return_string = ""
-    # while len(return_string) < 40:
-    #     if len(return_string) > order > 1:
-    #         last_one = return_string[-(order - 1):]
-    #         sub_prob = {}
-    #         for key, value in probs.iteritems():
-    #             if key[:-1] is last_one:
-    #                 sub_prob[key] = value
-    #
-    #         sub_prob_total = sum(sub_prob.values())
-    #         r, s = random.random() * sub_prob_total, 0
-    #
-    #         for key, value in sub_prob.iteritems():
-    #             s += value
-    #             if s >= r:
-    #                 return_string += key[order - 1]
-    #                 break
-    #     else:
-    #         r, s = random.random(), 0
-    #         for key, value in probs.iteritems():
-    #             s += value
-    #             if s >= r:
-    #                 return_string += key
-    #                 break
-    ##########################################################################
 
     print "Time: " + str(time.time() - start_time)
 
